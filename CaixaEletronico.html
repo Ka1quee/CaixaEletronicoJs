@@ -1,0 +1,173 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+
+	<script>
+		var saldo = 100.5; //Float
+		let nome = prompt("Olá, digite seu primeiro nome")
+		alert(`Olá ${nome}, é um prazer ter você por aqui!`)
+
+		inicio()
+		function inicio() {
+
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.) Depósito 5.) Transferência 6.) Sair'));
+
+			switch (escolha) {
+				case 1: ver_saldo()
+					break;
+
+				case 2:
+					extrato()
+					break;
+
+				case 3:
+					fazer_saque()
+					break;
+
+				case 4:
+					fazer_deposito()
+					break;
+
+				case 5:
+					transferencia()
+					break;
+
+					case 6:
+						sair()
+						break;
+
+
+				default:// Código a ser executado se expressao não corresponder a nenhum caso
+					erro()
+			}
+		}
+
+
+		function ver_saldo() {
+			solicitaSenha()
+				alert('Seu saldo atual é: ' + saldo.toFixed(2));
+				inicio();
+		}
+
+		function fazer_deposito() {
+			solicitaSenha()
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			// Not a Number
+			if (isNaN(deposito) || deposito <= 0) {
+				alert('Operação não autorizada');
+				fazer_deposito();
+			} else {
+				saldo += deposito;
+				alert(`Seu saldo é de: ${saldo.toFixed()}`)
+				inicio()
+			}
+		}
+		function extrato() {
+			solicitaSenha()
+			alert('Compra autorizada Amazon Prime - 07/04/2024\nCompra autorizada Mercado Livre - 04/04/2024\nCompra autorizada Kabum - 02/04/2024\n')
+			inicio()
+		}
+
+		function fazer_saque() {
+			solicitaSenha()
+			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque <= 0 || saque >= saldo) {
+				alert('Operação não autorizada');
+				fazer_saque();
+			} else {
+				saldo -= saque;
+
+				alert('Seu saldo atual é: ' + saldo.toFixed(2));
+				inicio()
+			}
+		}
+
+		function transferencia() {
+			solicitaSenha()
+			let numeroConta = parseInt(prompt("Informe o numero da conta que irá transferir"))
+			if (isNaN(numeroConta)) {
+				alert("Digite apenas numeros")
+				transferencia()
+			}
+			else {
+				let valorTransferencia = parseInt(prompt("Digite o valor"))
+				if (valorTransferencia <= 0 || valorTransferencia >= saldo) {
+					alert("Transferência não autorizada!")
+					transferencia()
+				} else {
+					saldo -= valorTransferencia
+					alert("Transferência realizada com sucesso!")
+					alert('Seu saldo atual é: ' + saldo.toFixed(2));
+					inicio()
+				}
+			}
+
+		}
+
+		function erro() {
+
+			if (deposito <= 0) {
+				alert("Operação nao autorizada!")
+			}
+			alert('Operação não autorizadaentre 1 e 4');
+			inicio();
+		}
+
+		function solicitaSenha(){
+			let senha = parseInt(prompt("Digite sua senha"))
+			if(senha!=3589){
+				alert("senha icorreta")
+				solicitaSenha()
+			}
+
+			else{
+				alert("Autenticação realizada com sucesso!")
+			}
+		}
+
+
+
+		function sair() {
+			var confirma = confirm("Certeza que deseja sair?");
+			if (confirma) {
+				window.close();
+				alert(`${nome}, foi um prazer te por aqui!`)
+			} else {
+				inicio();
+			}
+		}
+		
+
+
+
+
+	</script>
+
+	<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">2400.00000000000</mso:Order>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ReferenceId msdt:dt="string"></mso:ReferenceId>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">GABRIEL AZEVEDO</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:ContentTypeId msdt:dt="string">0x01010007715694252FA147AD75DD5D81F5DACE</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
+<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
+<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+	<title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
